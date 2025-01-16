@@ -13,7 +13,16 @@
     "isolatedModules": true,
     "jsx": "react-jsx", 
     "allowSyntheticDefaultImports": true,
+    "types": ["jest", "@testing-library/jest-dom", "node"]
   },
-  "include": ["src", "global.d.ts"],
+  "include": [
+    "src",
+    "global.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "jest.setup.js"
+  ],
   "exclude": ["node_modules"]
 }

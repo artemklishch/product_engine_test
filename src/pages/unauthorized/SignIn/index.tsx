@@ -45,7 +45,12 @@ const SignIn: FC = (): ReactElement => {
         <Fields formData={formData} dispatch={dispatch} />
         <section className="sign-in__form_action">
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <Button label="Sign In" type="submit" disabled={isFormValid} />
+          <Button
+            testId="sign-in-button-testid"
+            label="Sign In"
+            type="submit"
+            disabled={isFormValid}
+          />
         </section>
       </form>
     </div>

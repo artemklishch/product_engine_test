@@ -10,6 +10,7 @@ type Props = {
   iconButton?: ReactElement;
   autoComplete?: string;
   name?: string;
+  testId?: string;
 };
 
 const InputField: FC<Props> = ({
@@ -21,6 +22,7 @@ const InputField: FC<Props> = ({
   autoComplete = "new-password",
   iconButton,
   name,
+  testId,
 }): ReactElement => (
   <label className="input-field">
     <h6>{label}</h6>
@@ -32,10 +34,18 @@ const InputField: FC<Props> = ({
         onChange={onChange}
         value={value}
         name={name}
+        data-testid={testId}
       />
       {iconButton && iconButton}
     </div>
-    {error && <span className="error-message">{error}</span>}
+    {error && (
+      <span
+        data-testid="input-field-error-message-testid"
+        className="error-message"
+      >
+        {error}
+      </span>
+    )}
   </label>
 );
 

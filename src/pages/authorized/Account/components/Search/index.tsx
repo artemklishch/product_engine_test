@@ -1,4 +1,11 @@
-import { ChangeEvent, FC, ReactElement, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  ReactElement,
+  useEffect,
+  useState,
+} from "react";
 import InputField from "../../../../../components/UI/InputField";
 import Button from "../../../../../components/UI/Button";
 import "./Search.scss";
@@ -16,14 +23,17 @@ const Search: FC = (): ReactElement => {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setUserIdentifier(e.target.value);
   };
-  const onSearch = () => navigate(`/account/${userIdentofier}`);
+  const onSearch = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate(`/account/${userIdentofier}`);
+  };
   return (
     <div className="search">
       <h2 className="search__title">Search user by ID!</h2>
       <p className="search__subtitle">
         Type any possible number in the field and search
       </p>
-      <section className="search__field">
+      <form className="search__field" onSubmit={onSearch}>
         <InputField
           type="number"
           label="User ID"
@@ -31,11 +41,11 @@ const Search: FC = (): ReactElement => {
           value={userIdentofier}
         />
         <Button
+          type="submit"
           label="Search"
           disabled={!userIdentofier.length || userIdentofier === userId}
-          onClick={onSearch}
         />
-      </section>
+      </form>
     </div>
   );
 };

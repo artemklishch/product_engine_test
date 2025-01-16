@@ -7,6 +7,7 @@ type Props = {
   disabled?: boolean;
   onClick?: () => void;
   extraClass?: string;
+  testId?: string;
 };
 
 const Button: FC<Props> = ({
@@ -15,12 +16,14 @@ const Button: FC<Props> = ({
   disabled,
   onClick,
   extraClass,
+  testId,
 }): ReactElement => (
   <button
     className={`button ${extraClass ? extraClass : ""}`}
     type={type}
     disabled={disabled}
     onClick={onClick}
+    data-testid={testId}
   >
     {label}
   </button>

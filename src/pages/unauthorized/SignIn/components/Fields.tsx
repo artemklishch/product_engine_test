@@ -32,6 +32,7 @@ const Fields: FC<Props> = ({ formData, dispatch }): ReactElement => {
         value={formData.username.value}
         label="Username*"
         error={formData.username.error}
+        testId="signin-username-testid"
       />
       <InputField
         onChange={passwordChange}
@@ -46,6 +47,7 @@ const Fields: FC<Props> = ({ formData, dispatch }): ReactElement => {
             extraClass="password-field__btn"
           />
         }
+        testId="signin-password-testid"
       />
     </>
   );

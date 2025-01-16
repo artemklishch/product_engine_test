@@ -7,7 +7,7 @@ export type UserLocalData = {
 export type UserData = {
     id: number;
     name: string;
-    username: "admin"; // dummy username
+    username: string;
     email: string;
     address: {
         street: string;
