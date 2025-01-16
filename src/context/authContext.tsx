@@ -4,6 +4,7 @@ import {
   ReactElement,
   ReactNode,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -21,6 +22,7 @@ import {
 import { fetchUser } from "../api/users";
 import { UserData, AuthProvider } from "./authTypes";
 import { ErrorData } from "./types";
+import { ErrorContext } from "./errorContext";
 
 const intialValues: AuthProvider = {
   user: null,
@@ -38,6 +40,7 @@ interface Props {
 }
 const AuthContextProvider: FC<Props> = ({ children }): ReactElement => {
   const [authData, setAuthData] = useState<UserData | null>(null);
+  const { setErrorMessage } = useContext(ErrorContext);
 
   useEffect(() => {
     const data = getAuthorizedData();
@@ -71,7 +74,12 @@ const AuthContextProvider: FC<Props> = ({ children }): ReactElement => {
   const fetchUserHandler = useCallback(async (userId: number) => {
     const data = await fetchUser(userId);
     data.username = DUMMY_USERNAME; // dummy username
-    setAuthData(data);
+    if (Object.keys(data).length) {
+      setAuthData(data);
+    } else {
+      setErrorMessage("Failed when trying to sign in");
+      setAuthData(null);
+    }
     return data;
   }, []);
 

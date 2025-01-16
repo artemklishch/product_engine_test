@@ -20,7 +20,7 @@ const UserData: FC = (): ReactElement => {
   }, [userData]);
   return (
     <div>
-      {userData ? (
+      {!!userData ? (
         <div>
           <h3>User data:</h3>
           <UserValue

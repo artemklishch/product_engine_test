@@ -36,9 +36,15 @@ const UsersContextProvider: FC<Props> = ({ children }): ReactElement => {
   const fetchUserData = useCallback(
     async (userId: number): Promise<UserData | ErrorData> => {
       try {
-        const data = await fetchUserHandler(userId);
+        const data = await fetchUser(userId);
+        if (Object.keys(data).length) {
+          setUserData(data);
+        } else {
+          setUserData(null);
+        }
         return data;
       } catch (err) {
+        setUserData(null);
         if (err instanceof Error) {
           return { error: `Error occured while fetching user: ${err.message}` };
         }
@@ -48,24 +54,21 @@ const UsersContextProvider: FC<Props> = ({ children }): ReactElement => {
     []
   );
 
-  const updateUserData = useCallback(async (userData: UserData) => {
-    try {
-      const data = await addUpdateUser(userData, "PUT"); // dummy method
-      setUserData(data);
-      return data;
-    } catch (err) {
-      if (err instanceof Error) {
-        return { error: `Failed to update user data: ${err.message}` };
+  const updateUserData = useCallback(
+    async (userData: UserData): Promise<UserData | ErrorData> => {
+      try {
+        const data = await addUpdateUser(userData, "PUT"); // dummy method
+        setUserData(data);
+        return data;
+      } catch (err) {
+        if (err instanceof Error) {
+          return { error: `Failed to update user data: ${err.message}` };
+        }
+        return { error: "Failed to update user data" };
       }
-      return { error: "Failed to update user data" };
-    }
-  }, []);
-
-  const fetchUserHandler = useCallback(async (userId: number) => {
-    const data = await fetchUser(userId);
-    setUserData(data);
-    return data;
-  }, []);
+    },
+    []
+  );
 
   const values = useMemo<UsersProvider>(
     () => ({
