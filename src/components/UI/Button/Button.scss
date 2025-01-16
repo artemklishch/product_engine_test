@@ -1,0 +1,15 @@
+.button {
+    padding: 10px 20px;
+    background-color: var(--green-2);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    height: var(--size-field);
+    &:hover,
+    &:disabled {
+        opacity: 0.7;
+    }
+    &:disabled {
+        cursor: not-allowed;
+    }
+}

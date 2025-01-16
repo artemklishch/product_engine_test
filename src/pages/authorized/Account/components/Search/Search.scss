@@ -1,0 +1,8 @@
+.search {
+    padding: 20px 0;
+    &__field {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,9 @@
+.activation {
+    @include stretchAndCenteredContainer;
+    &__title {
+        margin: 20px 0 50px 0;
+    }
+    &__image {
+        max-width: 100%;
+    }
+}

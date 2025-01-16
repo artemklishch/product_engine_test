@@ -1,0 +1,9 @@
+.user-value {
+    border-top: 1px solid var(--gray-2);
+    width: 40vw;
+    &__value {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}

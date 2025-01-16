@@ -1,0 +1,22 @@
+.input-field {
+    cursor: pointer;
+    display: block;
+    padding-bottom: 20px;
+    flex-grow: 1;
+    .error-message {
+        position: absolute;
+    }
+    h6 {
+        margin: 5px 0;
+    }
+    &__wrapper-field {
+        display: flex;
+        position: relative;
+        &_field {
+            display: block;
+            width: 100%;
+            height: var(--size-field);
+            border-radius: 10px;
+        }
+    }
+}

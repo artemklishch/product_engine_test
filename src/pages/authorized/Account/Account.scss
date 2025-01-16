@@ -1,0 +1,9 @@
+.account {
+    @include stretchContainer;
+    align-items: center;
+    padding: 20px;
+    &__user-data {
+        @include stretchContainer;
+        padding: 20px 0;
+    }
+}

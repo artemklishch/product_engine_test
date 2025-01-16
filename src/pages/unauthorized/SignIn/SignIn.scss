@@ -1,0 +1,42 @@
+.sign-in {
+    padding: 10px;
+    background-color: var(--gray-1);
+    border: 1px solid var(--gray-2);
+    border-radius: 10px;
+    &__title {
+        text-align: center;
+    }
+    &__form {
+        width: 400px;
+        &_label {
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+            padding-bottom: 20px;
+            position: relative;
+            .error-message {
+                position: absolute;
+            }
+            h6 {
+                margin: 5px 0;
+            }
+        }
+        .password-field__btn {
+            width: 30px;
+            height: 18px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            padding: 0;
+            background-color: transparent;
+        }
+        &_action {
+            padding-top: 25px;
+            position: relative;
+            .error-message {
+                position: absolute;
+                top: 0;
+            }
+        }
+    }
+}
